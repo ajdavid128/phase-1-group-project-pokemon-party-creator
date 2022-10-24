@@ -2,6 +2,7 @@
 const select = document.querySelector('#generations-list');
 const partyContainer = document.querySelector('#selected-pokemon');
 const form = document.querySelector('#generations-form');
+let submitCounter = 0;
 
 const submitButton = document.createElement('button');
 submitButton.innerText = 'I Choose You!'
@@ -22,12 +23,37 @@ function fetchSprites(name){
 function renderSprites(eachSprite){
     const spriteImage = document.createElement('img');
     const spriteName = document.createElement('h3');
+    const removeButton = document.createElement('button');
 
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
+    removeButton.textContent = 'Return';
+    removeButton.classList = 'removeButton';
 
-    partyContainer.append(spriteImage)
-    partyContainer.append(spriteName)
+    function removeFunction() {
+
+        removeButton.addEventListener('click', (e) => {
+
+            let removeCounter = 0;
+
+            if(e.type) {
+
+                removeCounter++;
+            }
+
+            spriteImage.remove()
+            spriteName.remove()
+            removeButton.remove()
+        })
+
+    }
+    
+
+ 
+    partyContainer.append(spriteName, spriteImage, removeButton);
+    // partyContainer.append(spriteName)
+    
+    
 }
 
 //Render the generation names
@@ -43,11 +69,7 @@ function renderNames(oneName){
     oneName.results.forEach(element => {
     
         const options = document.createElement("option");
-        // let pokemonNumber = 0
-        // for(let i = pokemonNumber; i < 152; i++){
-        //     // ++pokemonNumber
-        //     options.textContent = `${i} ${element.name}`
-        // }
+
         options.textContent = element.name;
         options.value = element.name;
         options.classList = 'dropdown-value'
@@ -58,20 +80,20 @@ function renderNames(oneName){
     form.append(submitButton);   
 }
 
-//Submit Button Listener
-submitButton.addEventListener('click', (e) => {
-    console.log(e.type)
-    // 
-    let submitCounter = 0
-        if(submitCounter < 6){
-            ++submitCounter
-            submitButton.style.display = 'block';
-        } else {
-            
-        }
-})
-submitButton.style.display = 'none';
 
+
+submitButton.addEventListener('click', (e) => {
+
+    if(e.type) {
+        ++submitCounter;
+        
+        if(submitCounter === 6){
+            submitButton.style.display = 'none'
+        }else if(removeFunction(submitCounter))
+    }
+    // add removal and set submitCounter--
+        
+})
 
 //Form Submission
 form.addEventListener('submit', (e) =>{
@@ -89,6 +111,14 @@ form.addEventListener('submit', (e) =>{
 getGenOneNames()
 
 
-// function selectedPartyPokemon(eachPokemon){
 
-// }
+// submitCounter ++ = 6 == dispapears
+// removeCounter ++ 3 
+
+
+// submitButton - removeButton = 3
+
+// 3 = how many sumbit could be hit before disappearing 
+
+
+
