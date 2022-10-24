@@ -89,7 +89,7 @@ submitButton.addEventListener('click', (e) => {
         
         if(submitCounter === 6){
             submitButton.style.display = 'none'
-        }else if(removeFunction(submitCounter))
+        }
     }
     // add removal and set submitCounter--
         
