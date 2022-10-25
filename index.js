@@ -68,8 +68,25 @@ function renderSprites(eachSprite){
 
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
+
+    // Design for remove button
     removeButton.textContent = 'Return';
     removeButton.classList = 'removeButton';
+    removeButton.style.backgroundColor = "#3B4CCA";
+    removeButton.style.display = 'inline-block';
+    removeButton.style.padding = ' 0.3em 1.2em';
+    removeButton.style.margin = '0 0.1em 0.1em 0';
+    removeButton.style.border = "0.16em solid rgba(255,255,255,0)";
+    removeButton.style.borderRadius = '2em';
+    removeButton.style.boxSizing = 'border-box';
+    removeButton.style.textDecoration = 'none';
+    removeButton.style.fontFamily = 'Roboto, sans-serif';
+    removeButton.style.fontWeight = '500';
+    removeButton.style.color = '#FFFFFF';
+    removeButton.style.textShadow = '0 0.04em 0.04em rgba(0,0,0,0.35)';
+    removeButton.style.textAlign = 'center';
+    removeButton.style.transition = 'all 0.2s';
+
 
    
     spriteImage.style.display = 'block';
@@ -122,6 +139,8 @@ submitButton.addEventListener('click', (e) => {
 
 });
 
+
+submitButton.classList = 'submit-button';
 
 
 
