@@ -5,9 +5,12 @@ const form = document.querySelector('#generations-form');
 const submitButton = document.createElement('button');
 const removeBtn = document.querySelector('#removeButton');
 const partyDisplayText = document.querySelector('h2');
+const pokemonButton = document.createElement('button');
 let submitCounter = 0;
 let namesCounter = 0;
 
+pokemonButton.textContent = "Generate Pokemon";
+document.body.appendChild(pokemonButton);
 
 //Get generation names
 function getGenOneNames(){
@@ -15,37 +18,6 @@ function getGenOneNames(){
     fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151")
     .then(response => response.json())
     .then(data => renderNames(data))
-}
-
-//Render the generation names
-function renderNames(oneName){
-    
-    //Assign the first dropdown to blank and append it
-    const blankSpace = document.createElement('option')
-    blankSpace.textContent = '';
-    select.appendChild(blankSpace);
-
-
-    //Iterate through the generation names and append them to the dropdown
-    oneName.results.forEach(element => {
-    
-        const options = document.createElement("option");
-
-        //Assign a number to each name
-        if(namesCounter <= 151) {
-
-            namesCounter++;
-            options.innerText = `${namesCounter}. ${element.name}`
-           
-        }
-        
-        options.value = element.name;
-        options.classList = 'dropdown-value'
-    
-        select.appendChild(options);
-        }) 
-
-    form.append(submitButton);   
 }
 
 //Get sprites info
@@ -68,6 +40,18 @@ function renderSprites(eachSprite){
 
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
+
+    //Render Sprites to page
+    pokemonButton.addEventListener('click', () => {
+        // fetch(`https://pokeapi.co/api/v2/pokemon/${options.value}/`)
+        //         .then(res => res.json())
+        //         .then(data => {
+                    const img = document.createElement('img');
+                    img.src = eachSprite.sprites.front_default;
+                    document.body.appendChild(img);
+    })
+
+
 
     // Design for remove button
     removeButton.textContent = 'Return';
@@ -107,40 +91,53 @@ function renderSprites(eachSprite){
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Making the partyDisplayText disappear till submission
-partyDisplayText.style.display = 'none';
+// partyDisplayText.style.display = 'none';
 
-//Form Submission
-form.addEventListener('submit', (e) =>{
+// //Form Submission
+// form.addEventListener('submit', (e) =>{
 
-    e.preventDefault();
-    partyDisplayText.style.display = 'block'
-    fetchSprites(e.target['generations-list'].value);
-    form.reset();
+//     e.preventDefault();
+//     partyDisplayText.style.display = 'block'
+//     fetchSprites(e.target['generations-list'].value);
+//     form.reset();
   
-})
+// })
 
-//Assigning a value to the submit button
-submitButton.innerText = 'I Choose You!'
+// //Assigning a value to the submit button
+// submitButton.innerText = 'I Choose You!'
 
-//Submit button even listener
-submitButton.addEventListener('click', (e) => {
+// //Submit button even listener
+// submitButton.addEventListener('click', (e) => {
 
-    if(e.type) {
+//     if(e.type) {
 
-        ++submitCounter;
+//         ++submitCounter;
         
-        if(submitCounter === 6){
+//         if(submitCounter === 6){
     
-            submitButton.style.display = 'none'        
+//             submitButton.style.display = 'none'        
     
-        }
-    }
+//         }
+//     }
 
-});
+// });
 
 
-submitButton.classList = 'submit-button';
+// submitButton.classList = 'submit-button';
 
 
 
@@ -150,3 +147,47 @@ getGenOneNames();
 
 
 
+//Render the generation names
+function renderNames(oneName){
+    
+    // //Assign the first dropdown to blank and append it
+    // const blankSpace = document.createElement('option')
+    // blankSpace.textContent = '';
+    // select.appendChild(blankSpace);
+
+
+    //Iterate through the generation names and append them to the dropdown
+    oneName.results.forEach(element => {
+
+    
+        // const options = document.createElement("option");
+
+        // //Assign a number to each name
+        // if(namesCounter <= 151) {
+
+        //     namesCounter++;
+        //     options.innerText = `${namesCounter}. ${element.name}`
+           
+        // }
+        
+        //     options.value = element.name;
+        //     options.classList = 'dropdown-value'
+    
+        //     select.appendChild(options);
+
+            // select.addEventListener('mouseover', () => {
+            //      fetch(`https://pokeapi.co/api/v2/pokemon/${options.value}/`)
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         const img = document.createElement('img');
+            //         img.src = data.sprites.front_default;
+            //         document.body.appendChild(img);
+
+            //         console.log(data);
+            //     });
+                
+            // })
+        }) 
+
+    // form.append(submitButton);   
+}
