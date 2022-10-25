@@ -1,3 +1,7 @@
+body {
+    background-color: ;
+}
+
 #selected-pokemon {
 
     display: flex;
@@ -16,7 +20,7 @@
     border-radius: 50px;
     text-align: center;
     margin: 0 auto;
-    background-color: yellow;
+    background-color: #FFDE00;
     width: 200px;
 }
 
@@ -46,4 +50,30 @@ h2 {
     text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
     text-align: center;
     transition: all 0.2s;
+}
+
+/* .submitDiv {
+    /* border: 2px solid black; */
+    /* display: flex; */
+    /* margin: 0 auto; */
+    /* padding: 10px; */
+    /* width: 45%; */
+    /* text-align: center; */
+
+/* } */
+
+
+
+.submitDiv {
+
+    border: 2px solid black;
+    border-radius: 50px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #3B4CCA;
+    width: 200px;
+}
+
+h4 {
+    color: #FFFFFF;
 }

@@ -6,65 +6,76 @@ const partyDisplayText = document.querySelector('h2');
 const pokemonButton = document.createElement('button');
 const pokemonContainer = document.querySelector('#pokemon-container');
 const header = document.querySelector('header');
+const form = document.querySelector('form');
+const submitContainer = document.querySelector('#submitted-form');
+const formButton = document.querySelector('#submit-party');
 
 
+
+
+//FIX THE RETURN BUTTON ISSUE WITH SUBMIT
+
+
+
+
+
+
+const array = [];
+
+submitContainer.style.display = 'none'
+
+//Counter for party clicks:
+let selectPartyCounter = 0;
+
+
+//Generate Pokemon Button
 partyDisplayText.style.display = 'none';
 pokemonButton.textContent = "Generate Pokemon";
 header.appendChild(pokemonButton);
 
 
-
-
-    
+//Click Event -> Render Sprites to Page
 pokemonButton.addEventListener('click', () => {
+    
 
-    
-    
-        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151")
-        .then(response => response.json())
-        .then(data => renderNames(data))
+    //Fetch to grab 151 Pokemon
+    fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        renderNames(data);
+    })
 
     function renderNames(oneName){
-    
-        oneName.results.forEach(element => {
-   
-           
-       const name = document.createElement('p');
-   
-          name.innerText = element.name
-          fetchPokemonNames(name.innerText);
-   
-   
-   
+
+        oneName.results.forEach(element => {    
+        const name = document.createElement('p');
+        name.innerText = element.name
+
+        fetchPokemonNames(name.innerText);
        })
    }
    
    function fetchPokemonNames(name) {
-   
-       
+
+        //Fetch to grab sprites 
        fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
        .then(resp => resp.json())
        .then(data => {
 
             const img = document.createElement('img');
+            img.src = data.sprites.front_default;
+                
+                //Click to select sprites and append to "Party Container"
+                img.addEventListener('click', (e) => {
+                    if(partyContainer.children.length < 6){
+                        fetchSprites(name);       
+                    }
+                }) 
 
-           img.src = data.sprites.front_default;
-
-           img.addEventListener('click', (e) => {
-
-             fetchSprites(name);
-
-
-           })
-
-          pokemonContainer.appendChild(img);
-          
-
-            
+            pokemonContainer.appendChild(img);    
        })
-   
    }
-
 })
 
 
@@ -72,7 +83,6 @@ pokemonButton.addEventListener('click', () => {
 
 //Get sprites info
 function fetchSprites(name){
-
     fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
     .then(res => res.json())
     .then(data => (renderSprites(data)));
@@ -127,8 +137,33 @@ function renderSprites(eachSprite){
         removeButton.remove()        
         cards.remove();
     })
-           
+         
+    array.push(cards);
     cards.append(spriteName, spriteImage, removeButton);
     partyContainer.appendChild(cards);
 
 }
+console.log(array);
+
+
+
+//submit form stuff
+
+form.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    array.forEach(element => {
+        const submitDiv = document.createElement('div');
+        const arrayItemText = document.createElement('h4');
+        const arrayItemImg = document.createElement('img');
+
+        arrayItemText.innerText = element.childNodes[0].innerText
+        arrayItemImg.src = element.childNodes[1].src
+        submitDiv.classList = 'submitDiv'
+
+        submitDiv.append(arrayItemText, arrayItemImg);
+        submitContainer.append(submitDiv)
+
+    });
+    submitContainer.style.display = 'flex';
+    partyContainer.style.display = 'none';
+})
