@@ -1,6 +1,30 @@
 #selected-pokemon {
 
-   
     display: flex;
 
 }
+
+#selected-pokemon :hover {
+
+    background-color: grey;
+}
+
+
+.card {
+
+    border: 2px solid black;
+    border-radius: 50px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: yellow;
+    width: 200px;
+}
+
+h2 {
+
+    text-align: center;
+    margin: 100px 200px;
+}
+
+
+   

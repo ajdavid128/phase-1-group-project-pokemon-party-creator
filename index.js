@@ -4,6 +4,7 @@ const partyContainer = document.querySelector('#selected-pokemon');
 const form = document.querySelector('#generations-form');
 const submitButton = document.createElement('button');
 const removeBtn = document.querySelector('#removeButton');
+const partyDisplayText = document.querySelector('h2');
 let submitCounter = 0;
 let namesCounter = 0;
 
@@ -58,31 +59,45 @@ function fetchSprites(name){
 //Render sprites
 function renderSprites(eachSprite){
 
+    const cards = document.createElement('div');
     const spriteImage = document.createElement('img');
     const spriteName = document.createElement('h3');
     const removeButton = document.createElement('button');
+   
+    cards.classList = 'card';
 
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
     removeButton.textContent = 'Return';
     removeButton.classList = 'removeButton';
 
+   
+    spriteImage.style.display = 'block';
+    spriteImage.style.marginLeft = 'auto';
+    spriteImage.style.marginRight = 'auto';
+    spriteImage.style.width = '50';
+
     removeButton.addEventListener('click', (e) => {
 
         spriteImage.remove()
         spriteName.remove()
         removeButton.remove()        
-        
+        cards.remove();
     })
            
-    partyContainer.append(spriteName, spriteImage, removeButton);
+    cards.append(spriteName, spriteImage, removeButton);
+    partyContainer.appendChild(cards);
 
 }
+
+//Making the partyDisplayText disappear till submission
+partyDisplayText.style.display = 'none';
 
 //Form Submission
 form.addEventListener('submit', (e) =>{
 
     e.preventDefault();
+    partyDisplayText.style.display = 'block'
     fetchSprites(e.target['generations-list'].value);
     form.reset();
   
@@ -106,6 +121,9 @@ submitButton.addEventListener('click', (e) => {
     }
 
 });
+
+
+
 
 
 //invoke function
