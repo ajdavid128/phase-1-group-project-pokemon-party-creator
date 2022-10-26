@@ -23,7 +23,7 @@ const infoArray = [];
 refreshButton.style.display = 'none';
 infoContainer.style.display = 'none';
 formButton.style.display = 'none';
-// partyDisplayText.style.display = 'none';
+partyDisplayText.style.display = 'none';
 pokemonButton.textContent = "Generate Pokemon";
 pokemonButton.style.margin = '0 auto';
 pokemonButton.style.display = 'block';
@@ -100,12 +100,12 @@ function fetchSprites(name){
 //Render sprites
 function renderSprites(eachSprite){
     
-    const cards = document.createElement('div');
-    cards.setAttribute('pokemonName', eachSprite.name)
+    const card = document.createElement('div');
+    card.setAttribute('pokemonName', eachSprite.name)
     const spriteImage = document.createElement('img');
-    console.log(cards)
+    console.log(card)
     const spriteName = document.createElement('h3');
-    cards.classList = 'card';
+    card.classList = 'card';
         
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
@@ -115,11 +115,11 @@ function renderSprites(eachSprite){
     spriteImage.style.marginRight = 'auto';
     spriteImage.style.width = '50';
          
-    formArray.push(cards);
-    cards.append(spriteName, spriteImage);
-    partyContainer.appendChild(cards);
+    formArray.push(card);
+    card.append(spriteName, spriteImage);
+    partyContainer.appendChild(card);
     
-    cardsCounter.push(cards);
+    cardsCounter.push(card);
     if(cardsCounter.length >= 1) {
 
         formButton.style.display = 'block';
@@ -173,7 +173,7 @@ form.addEventListener('submit', (e) =>{
 
     formButton.remove(); 
 
-    partyDisplayText.style.display = 'block';
+    // partyDisplayText.style.display = 'block';
     submitContainer.style.display = 'flex';
     partyContainer.style.display = 'none';
     refreshButton.style.display = 'block';
