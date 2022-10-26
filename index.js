@@ -23,7 +23,7 @@ const infoArray = [];
 refreshButton.style.display = 'none';
 infoContainer.style.display = 'none';
 formButton.style.display = 'none';
-partyDisplayText.style.display = 'none';
+// partyDisplayText.style.display = 'none';
 pokemonButton.textContent = "Generate Pokemon";
 pokemonButton.style.margin = '0 auto';
 pokemonButton.style.display = 'block';
@@ -88,16 +88,22 @@ pokemonButton.addEventListener('click', () => {
 function fetchSprites(name){
     fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
     .then(res => res.json())
-    .then(data => (renderSprites(data)));
+    .then(data => {
+
+        renderSprites(data)
+        // console.log(data)
+    });
 }
 
 
 
 //Render sprites
 function renderSprites(eachSprite){
-
+    
     const cards = document.createElement('div');
+    cards.setAttribute('pokemonName', eachSprite.name)
     const spriteImage = document.createElement('img');
+    console.log(cards)
     const spriteName = document.createElement('h3');
     cards.classList = 'card';
         
@@ -128,6 +134,11 @@ form.addEventListener('submit', (e) =>{
     e.preventDefault();
     formArray.forEach(element => {
         const submitDiv = document.createElement('div');
+
+        let name = element.getAttribute('pokemonname')
+
+       
+        submitDiv.setAttribute('pokemonName', name)
         const arrayItemText = document.createElement('h4');
         const arrayItemImg = document.createElement('img');
         
@@ -145,8 +156,8 @@ form.addEventListener('submit', (e) =>{
         submitContainer.append(submitDiv)
 
         const infoImg = document.createElement('img');
-        submitDiv.addEventListener('mouseover', () => {
-            
+        submitDiv.addEventListener('mouseover', (e) => {
+            console.log(e.currentTarget);
             infoContainer.style.display = 'block';
             
         })
@@ -162,9 +173,12 @@ form.addEventListener('submit', (e) =>{
 
     formButton.remove(); 
 
+    partyDisplayText.style.display = 'block';
     submitContainer.style.display = 'flex';
     partyContainer.style.display = 'none';
     refreshButton.style.display = 'block';
+
+    // partyDisplayText.appendChild(header)
 })
 
 
@@ -173,9 +187,9 @@ refreshButton.addEventListener('click', () => {
 })
 
 
-infoArray.forEach(element => {
-    fetchDescription(element);
-})
+// infoArray.forEach(element => {
+//     fetchDescription(element);
+// })
 
 
 
