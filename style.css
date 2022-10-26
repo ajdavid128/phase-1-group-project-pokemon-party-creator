@@ -103,6 +103,16 @@ button  {
 
 }
 
-#decription {
+#description {
     
+        border: 2px solid black;
+        margin: 100px 100px;
+   
+}
+#description-p {
+
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: #FFDE00;
 }

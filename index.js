@@ -13,6 +13,7 @@ const infoContainer = document.querySelector('#info-container');
 const refreshButton = document.querySelector('#refresh-page');
 const descriptionDiv = document.querySelector('#description');
 const descriptionP = document.createElement('p');
+descriptionP.id = "description-p"
 const formArray = [];
 const cardsCounter = [];
 const infoArray = [];
@@ -33,6 +34,7 @@ header.appendChild(pokemonButton);
 pokemonButton.addEventListener('click', () => {
     
     pokemonButton.style.display = 'none';
+    descriptionDiv.style.display = 'none';
     //Fetch to grab 151 Pokemon
     fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151")
     .then(response => response.json())
