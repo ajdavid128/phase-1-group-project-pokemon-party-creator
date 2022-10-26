@@ -14,6 +14,14 @@ const refreshButton = document.querySelector('#refresh-page');
 const descriptionDiv = document.querySelector('#description');
 const descriptionP = document.createElement('p');
 descriptionP.id = "description-p"
+
+const tempStorage = document.querySelector('#temp-storage');
+
+const descriptionStorage = document.createElement('div');
+descriptionStorage.id = 'description-storage';
+tempStorage.appendChild(descriptionStorage);
+
+
 const formArray = [];
 const cardsCounter = [];
 const infoArray = [];
@@ -28,6 +36,8 @@ pokemonButton.textContent = "Generate Pokemon";
 pokemonButton.style.margin = '0 auto';
 pokemonButton.style.display = 'block';
 header.appendChild(pokemonButton);
+
+tempStorage.style.display = 'none';
 
 
 //Click Event -> Render Sprites to Page
@@ -74,7 +84,7 @@ pokemonButton.addEventListener('click', () => {
                     }
 
                 }) 
-
+                
             pokemonContainer.appendChild(img);    
        })
        
@@ -101,9 +111,11 @@ function fetchSprites(name){
 function renderSprites(eachSprite){
     
     const card = document.createElement('div');
+
     card.setAttribute('pokemonName', eachSprite.name)
     const spriteImage = document.createElement('img');
-    console.log(card)
+
+    // console.log(card)
     const spriteName = document.createElement('h3');
     card.classList = 'card';
         
@@ -139,7 +151,8 @@ form.addEventListener('submit', (e) =>{
 
        
         submitDiv.setAttribute('pokemonName', name)
-        const arrayItemText = document.createElement('h4');
+
+        const arrayItemText = document.createElement('h3');
         const arrayItemImg = document.createElement('img');
         
 
@@ -157,26 +170,29 @@ form.addEventListener('submit', (e) =>{
 
         const infoImg = document.createElement('img');
         submitDiv.addEventListener('mouseover', (e) => {
-            console.log(e.currentTarget);
+            // console.log(e.currentTarget);
             infoContainer.style.display = 'block';
-            
-        })
 
-        submitDiv.addEventListener('mouseout', () => {
-            
-            infoContainer.style.display = 'none';
-            
+            // const finalLi = document.createElement('li');
+            // finalLi.textContent = 
+
+            // infoContainer.append(finalLi)
+            pokemonContainer.style.display = 'none';
         })
 
         infoArray.push(element.childNodes[0].innerText);
+
+        fetchDescription(arrayItemText.innerText)
     });
 
+    
     formButton.remove(); 
 
     // partyDisplayText.style.display = 'block';
     submitContainer.style.display = 'flex';
     partyContainer.style.display = 'none';
     refreshButton.style.display = 'block';
+    
 
     // partyDisplayText.appendChild(header)
 })
@@ -198,12 +214,18 @@ function fetchDescription(name) {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
     .then(resp => resp.json())
     .then(data => {
-        const li = document.createElement('li');
 
-        li.innerText = data.flavor_text_entries[0].flavor_text;
-        console.log(li);
+        const descriptli = document.createElement('li');
+        descriptli.id = `${name}`
+        descriptli.classList = 'flavor-text'
+        descriptli.innerText = `${name[0].toUpperCase()}${name.slice(1,name.length)}: ${data.flavor_text_entries[0].flavor_text}`;
+        console.log(descriptli);
 
-        infoContainer.appendChild(li);
+        infoContainer.appendChild(descriptli);
+
+        //nidorino, zubat, caterpie's description are in Japanese
+        //rattata
+
 
     })
     
