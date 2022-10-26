@@ -11,8 +11,11 @@ const submitContainer = document.querySelector('#submitted-form');
 const formButton = document.querySelector('#submit-party');
 const infoContainer = document.querySelector('#info-container');
 const refreshButton = document.querySelector('#refresh-page');
+const descriptionDiv = document.querySelector('#description');
+const descriptionP = document.createElement('p');
 const formArray = [];
 const cardsCounter = [];
+const infoArray = [];
 
 
 // CSS styling & appending
@@ -95,18 +98,14 @@ function renderSprites(eachSprite){
     const spriteImage = document.createElement('img');
     const spriteName = document.createElement('h3');
     cards.classList = 'card';
-    
         
     spriteImage.src = eachSprite.sprites.front_default;
     spriteName.textContent = eachSprite.name;
 
-   
     spriteImage.style.display = 'block';
     spriteImage.style.marginLeft = 'auto';
     spriteImage.style.marginRight = 'auto';
     spriteImage.style.width = '50';
-
-    
          
     formArray.push(cards);
     cards.append(spriteName, spriteImage);
@@ -156,9 +155,7 @@ form.addEventListener('submit', (e) =>{
             
         })
 
-        fetchDescription(element.childNodes[0].innerText);
-       
-        
+        infoArray.push(element.childNodes[0].innerText);
     });
 
     formButton.remove(); 
@@ -168,9 +165,14 @@ form.addEventListener('submit', (e) =>{
     refreshButton.style.display = 'block';
 })
 
-refreshButton.addEventListener('click', () => {
 
+refreshButton.addEventListener('click', () => {
     location.reload();
+})
+
+
+infoArray.forEach(element => {
+    fetchDescription(element);
 })
 
 
@@ -181,17 +183,19 @@ function fetchDescription(name) {
     .then(resp => resp.json())
     .then(data => {
         const li = document.createElement('li');
-       
 
         li.innerText = data.flavor_text_entries[0].flavor_text;
         console.log(li);
 
-        
         infoContainer.appendChild(li);
 
     })
     
 }
-       
+
+
+descriptionP.textContent = `Welcome to Pokemon Party Creator! Here you can select your dream team to battle through "something". Our team has created a fun little experience for every pokemon lover out there. To begin you will select the "Generate Pokemon" button which will display all 151 Pokemon from the first generation (other generations to come soon). From here feel free to pick your 6 favorite Pokemon, just like in the games! This will become your ideal party. When you've finished selecting your 6 submit. This will allow you to learn more about your party by hovering the pokeball over each party member you selected. If you aren't satisfied with your party, or feel they might not survive the FINAL FOUR, feel free to start again by clicking the "Pick New Party" button and have another go! Thanks for visiting our site!`;
+
+descriptionDiv.append(descriptionP);
         
 
