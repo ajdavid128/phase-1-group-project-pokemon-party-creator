@@ -1,7 +1,7 @@
 //Global variables
 const select = document.querySelector('#generations-list');
 const partyContainer = document.querySelector('#selected-pokemon');
-const removeBtn = document.querySelector('#removeButton');
+const removeBtn = document.querySelector('#refreshButton');
 const partyDisplayText = document.querySelector('h2');
 const pokemonButton = document.createElement('button');
 const pokemonContainer = document.querySelector('#pokemon-container');
@@ -10,11 +10,13 @@ const form = document.querySelector('form');
 const submitContainer = document.querySelector('#submitted-form');
 const formButton = document.querySelector('#submit-party');
 const infoContainer = document.querySelector('#info-container');
+const refreshButton = document.querySelector('#refresh-page');
 const formArray = [];
 const cardsCounter = [];
 
 
 // CSS styling & appending
+refreshButton.style.display = 'none';
 infoContainer.style.display = 'none';
 formButton.style.display = 'none';
 partyDisplayText.style.display = 'none';
@@ -125,32 +127,7 @@ form.addEventListener('submit', (e) =>{
         const submitDiv = document.createElement('div');
         const arrayItemText = document.createElement('h4');
         const arrayItemImg = document.createElement('img');
-        const removeButton = document.createElement('button');
-
-        // Design for remove button
-        removeButton.textContent = 'Remove';
-        removeButton.classList = 'removeButton';
-        removeButton.style.backgroundColor = "#3B4CCA";
-        removeButton.style.display = 'inline-block';
-        removeButton.style.padding = ' 0.3em 1.2em';
-        removeButton.style.margin = '0 0.1em 0.1em 0';
-        removeButton.style.border = "0.16em solid rgba(255,255,255,0)";
-        removeButton.style.borderRadius = '2em';
-        removeButton.style.boxSizing = 'border-box';
-        removeButton.style.textDecoration = 'none';
-        removeButton.style.fontFamily = 'Roboto, sans-serif';
-        removeButton.style.fontWeight = '500';
-        removeButton.style.color = '#FFFFFF';
-        removeButton.style.textShadow = '0 0.04em 0.04em rgba(0,0,0,0.35)';
-        removeButton.style.textAlign = 'center';
-        removeButton.style.transition = 'all 0.2s';
-
-        removeButton.addEventListener('click', (e) => {
-
-            submitDiv.remove();
-      
-           
-        })
+        
 
         arrayItemText.innerText = element.childNodes[0].innerText
         arrayItemImg.src = element.childNodes[1].src
@@ -161,7 +138,7 @@ form.addEventListener('submit', (e) =>{
         arrayItemImg.style.marginRight = 'auto';
         arrayItemImg.style.width = '50';
 
-        submitDiv.append(arrayItemText, arrayItemImg, removeButton);
+        submitDiv.append(arrayItemText, arrayItemImg);
         submitContainer.append(submitDiv)
 
         const infoImg = document.createElement('img');
@@ -184,4 +161,16 @@ form.addEventListener('submit', (e) =>{
 
     submitContainer.style.display = 'flex';
     partyContainer.style.display = 'none';
+    refreshButton.style.display = 'block';
 })
+
+refreshButton.addEventListener('click', () => {
+
+    location.reload();
+})
+
+
+
+
+       
+        
