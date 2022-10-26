@@ -1,12 +1,14 @@
-body {
-    background-color: ;
-}
+h1 {
 
+    text-align: center;
+}
 #selected-pokemon {
 
     display: flex;
+    padding: 30px;
 
 }
+
 
 #selected-pokemon :hover {
 
@@ -22,6 +24,7 @@ body {
     margin: 0 auto;
     background-color: #FFDE00;
     width: 200px;
+   
 }
 
 h2 {
@@ -35,45 +38,33 @@ h2 {
     display: flex;
 }
 
-.submit-button {
-    background-color: #3B4CCA;
-    display: inline-block;
-    padding: 0.3em 1.2em;
-    margin: 0 0.1em 0.1em 0;
-    border: 0.16em solid rgba(255,255,255,0);
-    border-radius: 2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Roboto',sans-serif;
-    font-weight: 500;
-    color: #FFFFFF;
-    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-    text-align: center;
-    transition: all 0.2s;
-}
-
-/* .submitDiv {
-    /* border: 2px solid black; */
-    /* display: flex; */
-    /* margin: 0 auto; */
-    /* padding: 10px; */
-    /* width: 45%; */
-    /* text-align: center; */
-
-/* } */
-
-
-
 .submitDiv {
 
     border: 2px solid black;
     border-radius: 50px;
     text-align: center;
     margin: 0 auto;
-    background-color: #3B4CCA;
+    background-color: brown;
     width: 200px;
+    
 }
 
 h4 {
+
     color: #FFFFFF;
+}
+
+#submitted-form {
+
+    padding: 30px;    
+
+}
+
+#info-container {
+
+    border: 2px solid black;
+    margin: 0 auto;
+    padding: 50px;
+    width: 600px;
+    border-radius: 20px;
 }
