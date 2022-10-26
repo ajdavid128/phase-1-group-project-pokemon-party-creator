@@ -44,6 +44,8 @@ pokemonButton.addEventListener('click', () => {
         name.innerText = element.name
 
         fetchPokemonNames(name.innerText);
+    
+        
        })
    }
    
@@ -154,6 +156,8 @@ form.addEventListener('submit', (e) =>{
             
         })
 
+        fetchDescription(element.childNodes[0].innerText);
+       
         
     });
 
@@ -171,6 +175,23 @@ refreshButton.addEventListener('click', () => {
 
 
 
+function fetchDescription(name) {
 
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+    .then(resp => resp.json())
+    .then(data => {
+        const li = document.createElement('li');
+       
+
+        li.innerText = data.flavor_text_entries[0].flavor_text;
+        console.log(li);
+
+        
+        infoContainer.appendChild(li);
+
+    })
+    
+}
        
         
+
