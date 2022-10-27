@@ -76,7 +76,9 @@ h4 {
 
 #submitted-form {
 
-    padding: 30px;    
+    padding: 30px;
+    padding-top: 100px;
+    padding-bottom: 50px;
 
 }
 
@@ -88,9 +90,10 @@ h4 {
     border-radius: 20px;
 }
 
-button  {
+/* BUTTONS */
 
-    background-color :#3B4CCA;
+button  {
+    background-color: #3b4cca;
     display : inline-block;
     padding : 0.3em 1.2em;
     margin : 0 0.1em 0.1em 0;
@@ -98,7 +101,7 @@ button  {
     border-radius : 2em;
     box-sizing : border-box;
     text-decoration : none;
-    font-family : Roboto, sans-serif;
+    font-family : 'Press Start 2P', cursive;
     font-weight : 500;
     color : #FFFFFF;
     text-shadow : 0 0.04em 0.04em rgba(0,0,0,0.35);
@@ -110,12 +113,33 @@ button  {
 
 }
 
+#gen-btn {
+    width: 350px;
+    height: 100px;
+    background-color :#FF4F4F;
+    font-size: 18px;
+}
+
+#form-btn {
+    width: 120px;
+    height: 50px;
+}
+
+#refresh-btn {
+    width: 300px;
+    height: 50px;
+}
+
+
+/* DESCRIPTIONS */
+
 #description {
     
-        /* border: 2px solid black; */
-        margin: 100px 100px;
+    /* border: 2px solid black; */
+    margin: 100px 100px;
    
 }
+
 #description-p {
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
@@ -123,6 +147,8 @@ button  {
     padding: 40px;
     text-align: center;
     color: white;
+    padding-top: 0px;
+    padding-bottom: 0px;
     
 }
 

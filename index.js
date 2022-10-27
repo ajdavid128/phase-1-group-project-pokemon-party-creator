@@ -26,6 +26,11 @@ const formArray = [];
 const cardsCounter = [];
 const infoArray = [];
 
+// Button Attributes
+pokemonButton.id = 'gen-btn'
+formButton.id = 'form-btn'
+refreshButton.id = 'refresh-btn'
+
 
 // CSS styling & appending
 refreshButton.style.display = 'none';
