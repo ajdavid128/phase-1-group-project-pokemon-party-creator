@@ -2,7 +2,7 @@
 const select = document.querySelector('#generations-list');
 const partyContainer = document.querySelector('#selected-pokemon');
 const removeBtn = document.querySelector('#refreshButton');
-const partyDisplayText = document.querySelector('h2');
+// const partyDisplayText = document.querySelector('h2');
 const pokemonButton = document.createElement('button');
 const pokemonContainer = document.querySelector('#pokemon-container');
 const header = document.querySelector('header');
@@ -38,7 +38,7 @@ refreshButton.id = 'refresh-btn'
 refreshButton.style.display = 'none';
 infoContainer.style.display = 'none';
 formButton.style.display = 'none';
-partyDisplayText.style.display = 'none';
+// partyDisplayText.style.display = 'none';
 pokemonButton.textContent = "Generate Pokemon";
 pokemonButton.style.margin = '0 auto';
 pokemonButton.style.display = 'block';
@@ -223,29 +223,18 @@ function fetchDescription(name) {
     .then(data => {
 
         const descriptli = document.createElement('li');
+        const nameSpan = document.createElement('span');
+        const descriptionSpan = document.createElement('span');
         descriptli.id = `${name}`
         descriptli.classList = 'flavor-text'
-        descriptli.innerText = `${name[0].toUpperCase()}${name.slice(1,name.length)}: ${data.flavor_text_entries[0].flavor_text}`;
+        nameSpan.innerText = `${name[0].toUpperCase()}${name.slice(1,name.length)}:`;
+        descriptionSpan.innerText = ` ${data.flavor_text_entries[0].flavor_text}`;
+        descriptli.append(nameSpan, descriptionSpan);
 
-        console.log(descriptli.innerText)
-        // console.log(descriptli);
+        nameSpan.style.color = '#ffde00';
+        nameSpan.style.textDecoration = 'underline';
 
         infoContainer.appendChild(descriptli);
-
-        //nidorino, zubat, caterpie's description are in Japanese/Chinese
-        //rattata
-
-        // Grabbing Flavor Text First Word
-        // const flavorTextName = descriptli.innerText.split(' ')[0]
-        // console.log(flavorTextName);
-        // for(let i = 0; i < flavorTextName.length; i++){
-            
-        //         console.log(flavorTextName[i])
-            
-        // }
-        
-        // test.push(flavorTextName)
-        // flavorTextName.style.color = "red";
 
     })
     
