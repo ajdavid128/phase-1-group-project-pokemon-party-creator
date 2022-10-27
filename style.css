@@ -17,6 +17,12 @@ body {
 }
 
 
+hr {
+    border: 5px black;
+    border-radius: 5px;
+  }
+
+
 #selected-pokemon {
 
     display: flex;
@@ -84,7 +90,7 @@ h4 {
 
 #info-container {
 
-    border: 2px solid black;
+    border: 4px solid black;
     margin: 100px 100px;
     /* padding: 50px; */
     border-radius: 20px;
@@ -133,6 +139,17 @@ button  {
 
 /* DESCRIPTIONS */
 
+p {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+#welcome {
+    font-size: 30px;
+}
+
 #description {
     
     /* border: 2px solid black; */
@@ -140,7 +157,7 @@ button  {
    
 }
 
-#description-p {
+/* #description-p {
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     margin: 0 auto;
@@ -150,7 +167,7 @@ button  {
     padding-top: 0px;
     padding-bottom: 0px;
     
-}
+} */
 
 .flavor-text {
     margin: 0 auto;
