@@ -8,7 +8,6 @@ body {
     /* background by SVGBackgrounds.com */
 }
 
-
 #title {
     display: block;
     margin-left: auto;
@@ -16,18 +15,14 @@ body {
     width: 50%;
 }
 
-
 hr {
     border: 5px black;
     border-radius: 5px;
   }
 
-
 #selected-pokemon {
-
     display: flex;
     padding: 30px;
-
 }
 
 h3 {
@@ -35,22 +30,13 @@ h3 {
     font-size: 12px;
 }
 
-
-#selected-pokemon :hover {
-
-    background-color: grey;
-}
-
-
 .card {
-
     border: 2px solid black;
     border-radius: 50px;
     text-align: center;
     margin: 0 auto;
     background-color: #FFDE00;
     width: 200px;
-   
 }
 
 h2 {
@@ -61,40 +47,32 @@ h2 {
     margin: 20px;
 }
 
-
 #selected-pokemon {
     display: flex;
 }
 
 .submitDiv {
-
     border: 2px solid black;
     border-radius: 50px;
     text-align: center;
     margin: 0 auto;
     background-color: #3db83b;
     width: 200px;
-    
 }
 
 h4 {
-
     color: black;
 }
 
 #submitted-form {
-
     padding: 30px;
     padding-top: 100px;
     padding-bottom: 50px;
-
 }
 
 #info-container {
-
     border: 4px solid black;
     margin: 100px 100px;
-    /* padding: 50px; */
     border-radius: 20px;
 }
 
@@ -104,13 +82,10 @@ h4 {
     margin-top: 25px;
     margin-bottom: 25px;
     display: inline-block;
-
-     
 }
 
 
 /* BUTTONS */
-
 button  {
     background-color: #3b4cca;
     padding : 0.3em 1.2em;
@@ -120,7 +95,6 @@ button  {
     color : #FFFFFF;
     text-align : center;
     cursor: url(./images/pokeball-cursor.png), default;
-
 }
 
 #gen-btn {
@@ -142,12 +116,10 @@ button  {
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
-
 }
 
 
 /* DESCRIPTIONS */
-
 h5 {
     font-family: 'Press Start 2P', cursive;
     color: white;
@@ -168,7 +140,6 @@ p {
     width: 600px;
     margin: auto;
     padding: 10px;
-    
 }
 
 .steps {
@@ -177,26 +148,11 @@ p {
 }
 
 #description {
-    
-    /* border: 2px solid black; */
     margin-right: 100px;
     margin-left: 100px;
     margin-bottom: 100px;
     margin-top: 50px;
-   
 }
-
-/* #description-p {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 20px;
-    margin: 0 auto;
-    padding: 40px;
-    text-align: center;
-    color: white;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    
-} */
 
 .flavor-text {
     margin: 0 auto;
@@ -207,4 +163,8 @@ p {
     color: white;
     display: block;
     line-height: 1.6;
+}
+
+a {
+    color: #FFDE00;
 }
