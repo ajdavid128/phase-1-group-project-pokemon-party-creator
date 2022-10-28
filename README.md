@@ -29,3 +29,14 @@ The focus of this project was to use a GET .fetch() request on a public API. For
 We chose the Poké API as a fun homage to our childhood hobbies. 
 
 The webpage was built from the ground up using HMTL, JavaScript and CSS. 
+
+## Sources and Credits:
+All intellectual property (sprite and names) content is a trademark of Pokémon™ 
+API Data requested from PokéAPI: https://pokeapi.co/docs/v2
+Background CSS styling provided by SVGBackgrounds: https://www.svgbackgrounds.com/
+Button CSS styling provided by Federico Dossena: https://fdossena.com/?p=html5cool/buttons/i.frag
+Font titled "Press Start 2P" and designed by CodeMan38. Provided by Google Fonts: https://fonts.google.com/specimen/Press+Start+2P?category=Display
+Title designed by Textcraft: https://textcraft.net/style/Textcraft/pokemon
+
+
+
